@@ -1,0 +1,30 @@
+name: Daily Thumbnail
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate thumbnail
+        run: npm run generate
+
+      - name: Commit and push updated thumbnail
+        run: |
+          git config user.name "thumbnail-bot"
+          git config user.email "actions@github.com"
+          git add output/latest-thumbnail.png
+          git diff --quiet --cached || git commit -m "Update daily thumbnail"
+          git push
