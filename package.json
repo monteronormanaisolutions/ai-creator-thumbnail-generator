@@ -1,0 +1,12 @@
+{
+    "name": "ai-creator-thumbnail-generator",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Free daily thumbnail generator — renders an HTML/CSS text card to PNG via Puppeteer. No paid image APIs.",
+    "scripts": {
+          "generate": "node generate.js"
+    },
+    "dependencies": {
+          "puppeteer": "^23.0.0"
+    }
+}
