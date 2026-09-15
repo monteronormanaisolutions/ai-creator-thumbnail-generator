@@ -1,4 +1,6 @@
 name: Daily Thumbnail
+permissions:
+  contents: write
 
 on:
   schedule:
